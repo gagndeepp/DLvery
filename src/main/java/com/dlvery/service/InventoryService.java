@@ -23,7 +23,6 @@ public class InventoryService {
 
 	public void deleteInventory(String del) {
 		// ir.deleteById(del);
-
 	}
 
 }
