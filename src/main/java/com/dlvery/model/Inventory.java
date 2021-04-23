@@ -1,17 +1,34 @@
 package com.dlvery.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "inventory")
 public class Inventory {
+	
 	@Id
 	public String productId;
 	@Field
 	public String productName;
 	@Field
 	public String priority;
+	@Field
+	public String productCategory;
+	@Field
+	public Date checkInDate;
+	@Field 
+	public Date checkOutDate;
+	@Field
+	public String customerAddress;
+	@Field
+	public String contactNumber;
+	@Field
+	public String status;
+	@Field
+	public DeliveryExecutive executive;
 
 	public String getProductId() {
 		return productId;
