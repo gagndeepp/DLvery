@@ -15,6 +15,7 @@ import com.dlvery.service.DLveryService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:3000")
+//git check 
 //@CrossOrigin(origins="http://192.168.1.62")
 public class DLveryController {
 	@Autowired
