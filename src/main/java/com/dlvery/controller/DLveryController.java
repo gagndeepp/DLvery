@@ -48,6 +48,11 @@ public class DLveryController {
 			return is.getAllExecutive();
 	}
 	
+	@GetMapping("/executive/getMyInventory")
+	public List<Inventory> getMyInventory(@RequestParam String execId){
+		return is.getMyInventory(execId);
+	}
+	
 	@PutMapping("/executive/assignExecutive")	
 	public void assignExecutives(@RequestBody List<Inventory> selected) {
 //			return null;

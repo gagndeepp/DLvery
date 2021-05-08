@@ -1,5 +1,6 @@
 package com.dlvery.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,19 @@ public class DLveryService {
 
 	public void deleteInventory(String del) {
 		// ir.deleteById(del);
+	}
+	
+	public List<Inventory> getMyInventory(String execId){
+			
+		List<Inventory> res;
+		Query q = new Query();
+		q.addCriteria(Criteria.where("executive.exId").is(execId));
+		
+		res = mongoOp.find(q, Inventory.class);
+		
+		System.out.println(res);
+		Collections.sort(res, (a,b) -> a.getPriority().compareTo(b.getPriority()));
+		return res;
 	}
 
 	public void assignExecutives(@RequestBody List<Inventory> selected) {
