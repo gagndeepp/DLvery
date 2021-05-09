@@ -92,5 +92,9 @@ public class DLveryService {
 //        update.set("description", department.getDescription());
 //        return mongoOp.findAndModify(query, update, Department.class);
 	}
+	public void addBatchInv(List <Inventory> list)
+	{
+		ir.save(list);
+	}
 
 }

@@ -43,6 +43,10 @@ public class DLveryController {
 		return is.addExecutive(de);
 	}
 	
+	@PostMapping("/inventory/batchAdd")
+	public void addBatchInv(@RequestBody List<Inventory> list) {
+		is.addBatchInv(list);
+	}
 	@GetMapping("/executive/all")
 	public List<DeliveryExecutive> getAllExecutive(){
 			return is.getAllExecutive();
