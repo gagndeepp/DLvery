@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
-Built-By: Saksham Narula
-Build-Jdk: 11.0.11
 Implementation-Title: spring-boot-mongodb
 Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: legen
 Implementation-Vendor-Id: com.journaldev.spring
-Implementation-Vendor: Pivotal Software, Inc.
-Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-mo
- ngodb/
+Build-Jdk: 1.8.0_92
+Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-
+ mongodb/
 Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
 
