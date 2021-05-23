@@ -64,12 +64,6 @@ public class UserAccounts {
         this.roleType = roleType;
     }
 
-    public UserAccounts(String name, String pwd, String email, String contact) {
-        this.name = name;
-        this.pwd = pwd;
-        this.email = email;
-        this.contact = contact;
-    }
 
     public UserAccounts() {
     }

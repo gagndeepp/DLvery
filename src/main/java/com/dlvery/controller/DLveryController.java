@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dlvery.model.DeliveryExecutive;
 import com.dlvery.model.Inventory;
 import com.dlvery.service.DLveryService;
 
@@ -38,24 +37,15 @@ public class DLveryController {
 		System.out.println("Inventory Added - " + i.toString());
 		return ds.addInventory(i);
 	}
-	
-	@PostMapping("/executive/add")
-	public DeliveryExecutive addExecutive(@RequestBody DeliveryExecutive de) {
-		return ds.addExecutive(de);
-	}
-	
+
 	@PostMapping("/inventory/batchAdd")
 	public void addBatchInv(@RequestBody List<Inventory> list) {
 		ds.addBatchInv(list);
 	}
-	@GetMapping("/executive/all")
-	public List<DeliveryExecutive> getAllExecutive(){
-			return ds.getAllExecutive();
-	}
 	
 	@GetMapping("/executive/getMyInventory")
-	public List<Inventory> getMyInventory(@RequestParam String execId){
-		return ds.getMyInventory(execId);
+	public List<Inventory> getMyInventory(@RequestParam String contact){
+		return ds.getMyInventory(contact);
 	}
 	
 	@PutMapping("/executive/assignExecutive")	
@@ -69,6 +59,10 @@ public class DLveryController {
 		ds.performSignUp(ua);
 	}
 
+	@GetMapping("/users/all")
+	public List<UserAccounts> getAllUsers(){
+		return ds.getAllUsers();
+	}
 	
 	
 

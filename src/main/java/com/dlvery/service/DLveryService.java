@@ -14,18 +14,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.dlvery.model.Controversy;
-import com.dlvery.model.DeliveryExecutive;
 import com.dlvery.model.Inventory;
 import com.dlvery.repo.ControversyRepo;
-import com.dlvery.repo.DeliveryExRepo;
 import com.dlvery.repo.InventoryRepo;
 
 @Service
 public class DLveryService {
 	@Autowired
 	private InventoryRepo ir;
-	@Autowired
-	private DeliveryExRepo dr;
 	@Autowired
 	private ControversyRepo cr;
 	@Autowired
@@ -38,10 +34,6 @@ public class DLveryService {
 		return ir.save(i);
 	}
 
-	public DeliveryExecutive addExecutive(DeliveryExecutive de) {
-		return dr.save(de);
-	}
-
 	public Controversy addControversy(Controversy c) {
 		return cr.save(c);
 	}
@@ -50,29 +42,24 @@ public class DLveryService {
 		return ir.findAll();
 	}
 
-	public List<DeliveryExecutive> getAllExecutive() {
-		return dr.findAll();
-	}
-
 	public void deleteInventory(String del) {
 		// ir.deleteById(del);
 	}
 
 	public void performSignUp(UserAccounts inputua){
 //		ua.
+		System.out.println("\n\n\n >>>>> " + inputua);
 		ua.save(inputua);
 	}
 
 
-	public List<Inventory> getMyInventory(String execId){
+	public List<Inventory> getMyInventory(String contact){
 			
 		List<Inventory> res;
 		Query q = new Query();
-		q.addCriteria(Criteria.where("executive.exId").is(execId));
-		
+		q.addCriteria(Criteria.where("executive.contact").is(contact));
 		res = mongoOp.find(q, Inventory.class);
-		
-		System.out.println(res);
+		System.out.println(">>>>>>>>>>>>!!!!!!!!!!!!!!!!!!!!" + contact + res);
 		Collections.sort(res, (a,b) -> a.getPriority().compareTo(b.getPriority()));
 		return res;
 	}
@@ -90,7 +77,6 @@ public class DLveryService {
 			u.set("checkOutDate", i.getCheckOutDate());
 			u.set("status", i.getStatus());	
 			u.set("executive", i.getExecutive());
-			
 			System.out.println("ForLoop ---- -- -  - - -- -- " + q + " >>>> " + u);
 			mongoOp.updateMulti(q,u, Inventory.class);
 		}
@@ -106,5 +92,10 @@ public class DLveryService {
 	{
 		ir.save(list);
 	}
+
+	public List<UserAccounts> getAllUsers(){
+		return ua.findAll();
+	}
+
 
 }

@@ -6,8 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Document(collection = "inventory")
 public class Inventory {
 
@@ -17,26 +15,6 @@ public class Inventory {
 	public String productName;
 	@Field
 	public String priority;
-	
-	public Inventory() {
-		super();
-	}
-
-	public Inventory(String productId, String productName, String priority, String productCategory, Date checkInDate,
-			Date checkOutDate, String customerAddress, String contactNumber, String status,
-			DeliveryExecutive executive) {
-		super();
-		this.productId = productId;
-		this.productName = productName;
-		this.priority = priority;
-		this.productCategory = productCategory;
-		this.checkInDate = checkInDate;
-		this.checkOutDate = checkOutDate;
-		this.customerAddress = customerAddress;
-		this.contactNumber = contactNumber;
-		this.status = status;
-		this.executive = executive;
-	}
 
 	@Field
 	public String productCategory;
@@ -52,17 +30,8 @@ public class Inventory {
 	public String contactNumber;
 	@Field
 	public String status;
-
-	public DeliveryExecutive getExecutive() {
-		return executive;
-	}
-
-	public void setExecutive(DeliveryExecutive executive) {
-		this.executive = executive;
-	}
-
 	@Field
-	public DeliveryExecutive executive;
+	public UserAccounts executive;
 
 	public String getProductId() {
 		return productId;
@@ -74,6 +43,48 @@ public class Inventory {
 
 	public String getProductName() {
 		return productName;
+	}
+
+
+	public Inventory() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Inventory{" +
+				"productId='" + productId + '\'' +
+				", productName='" + productName + '\'' +
+				", priority='" + priority + '\'' +
+				", productCategory='" + productCategory + '\'' +
+				", checkInDate=" + checkInDate +
+				", checkOutDate=" + checkOutDate +
+				", customerAddress='" + customerAddress + '\'' +
+				", contactNumber='" + contactNumber + '\'' +
+				", status='" + status + '\'' +
+				", executive=" + executive +
+				'}';
+	}
+
+	public Inventory(String productId, String productName, String priority, String productCategory, Date checkInDate, Date checkOutDate, String customerAddress, String contactNumber, String status, UserAccounts executive) {
+		this.productId = productId;
+		this.productName = productName;
+		this.priority = priority;
+		this.productCategory = productCategory;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.customerAddress = customerAddress;
+		this.contactNumber = contactNumber;
+		this.status = status;
+		this.executive = executive;
+	}
+
+	public UserAccounts getExecutive() {
+		return executive;
+	}
+
+	public void setExecutive(UserAccounts executive) {
+		this.executive = executive;
 	}
 
 	public void setProductName(String productName) {
@@ -136,13 +147,6 @@ public class Inventory {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Inventory [productId=" + productId + ", productName=" + productName + ", priority=" + priority
-				+ ", productCategory=" + productCategory + ", checkInDate=" + checkInDate + ", checkOutDate="
-				+ checkOutDate + ", customerAddress=" + customerAddress + ", contactNumber=" + contactNumber
-				+ ", status=" + status + ", executive=" + executive + "]";
-	}
 
 	
 
