@@ -3,6 +3,8 @@ package com.dlvery.service;
 import java.util.Collections;
 import java.util.List;
 
+import com.dlvery.model.UserAccounts;
+import com.dlvery.repo.UserAccountsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -26,6 +28,8 @@ public class DLveryService {
 	private DeliveryExRepo dr;
 	@Autowired
 	private ControversyRepo cr;
+	@Autowired
+	private UserAccountsRepo ua;
 
 	@Autowired
 	public MongoOperations mongoOp;
@@ -53,7 +57,13 @@ public class DLveryService {
 	public void deleteInventory(String del) {
 		// ir.deleteById(del);
 	}
-	
+
+	public void performSignUp(UserAccounts inputua){
+//		ua.
+		ua.save(inputua);
+	}
+
+
 	public List<Inventory> getMyInventory(String execId){
 			
 		List<Inventory> res;

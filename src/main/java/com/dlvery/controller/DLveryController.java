@@ -2,6 +2,7 @@ package com.dlvery.controller;
 
 import java.util.List;
 
+import com.dlvery.model.UserAccounts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ import com.dlvery.service.DLveryService;
 @CrossOrigin(origins="http://localhost:3000")
 public class DLveryController {
 	@Autowired
-	private DLveryService is;
+	private DLveryService ds;
 
 	/*
 	 * public InventoryController(inventoryService i) { // TODO Auto-generated
@@ -28,40 +29,46 @@ public class DLveryController {
 
 	@GetMapping("/inventory/all")
 	public List<Inventory> getAllInventory() {
-		System.out.println("Inventory GetAllInventory - " + is.getAllInventory().toString());
-		return is.getAllInventory();
+		System.out.println("Inventory GetAllInventory - " + ds.getAllInventory().toString());
+		return ds.getAllInventory();
 	}
 
 	@PostMapping("/inventory/add")
 	public Inventory addInventory(@RequestBody Inventory i) {
 		System.out.println("Inventory Added - " + i.toString());
-		return is.addInventory(i);
+		return ds.addInventory(i);
 	}
 	
 	@PostMapping("/executive/add")
 	public DeliveryExecutive addExecutive(@RequestBody DeliveryExecutive de) {
-		return is.addExecutive(de);
+		return ds.addExecutive(de);
 	}
 	
 	@PostMapping("/inventory/batchAdd")
 	public void addBatchInv(@RequestBody List<Inventory> list) {
-		is.addBatchInv(list);
+		ds.addBatchInv(list);
 	}
 	@GetMapping("/executive/all")
 	public List<DeliveryExecutive> getAllExecutive(){
-			return is.getAllExecutive();
+			return ds.getAllExecutive();
 	}
 	
 	@GetMapping("/executive/getMyInventory")
 	public List<Inventory> getMyInventory(@RequestParam String execId){
-		return is.getMyInventory(execId);
+		return ds.getMyInventory(execId);
 	}
 	
 	@PutMapping("/executive/assignExecutive")	
 	public void assignExecutives(@RequestBody List<Inventory> selected) {
 //			return null;
-				is.assignExecutives(selected);
+				ds.assignExecutives(selected);
 	}
+
+	@PostMapping("/user/signup")
+	public void performSignUp(@RequestBody UserAccounts ua){
+		ds.performSignUp(ua);
+	}
+
 	
 	
 
